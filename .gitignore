@@ -1,0 +1,16 @@
+# Ignore DVC-tracked data
+data/raw_data.csv
+data/splits/
+
+# Ignore MacOS and system files
+.DS_Store
+.localized
+.ipynb_checkpoints/
+.RData
+.Rapp.history
+.Rhistory
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
