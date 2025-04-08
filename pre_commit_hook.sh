@@ -1,0 +1,19 @@
+#!/bin/sh
+# Pre-commit hook to run tests before committing to the main branch.
+
+# Get the current branch name.
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+
+# Only run tests if we're on the 'main' branch.
+if [ "$BRANCH_NAME" = "main" ]; then
+    echo "Running tests before committing on branch '$BRANCH_NAME'..."
+    pytest test.py
+    if [ $? -ne 0 ]; then
+        echo "Tests failed. Commit aborted."
+        exit 1
+    fi
+    echo "All tests passed. Proceeding with commit."
+fi
+
+exit 0
+
